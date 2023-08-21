@@ -1,22 +1,51 @@
 import React from 'react'
 import './Navigation.css';
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
+
 
 export default function Navigation() {
+    const location = useLocation();
+
     return window.innerWidth > 768 ?
         <>
-            <div className='navigation__btn-container navigation__btn-container_films'>
-                <Link to="/movies" className='navigation__btn navigation__btn_bold'>
-                    Фильмы
-                </Link>
-                <Link to="/saved-movies" className='navigation__btn'>
-                    Сохраненные фильмы
-                </Link>
-            </div>
+            {location.pathname === "/movies" ? (
+                <div className='navigation__btn-container navigation__btn-container_films'>
+                    <Link to="/movies" className='navigation__btn navigation__btn_bold '
+                    >
+                        Фильмы
+                    </Link>
+                    <Link to="/saved-movies" className='navigation__btn'
+                    >
+                        Сохраненные фильмы
+                    </Link>
+                </div>
+            ) : location.pathname === "/saved-movies" ? (
+                <div className='navigation__btn-container navigation__btn-container_films'>
+                    <Link to="/movies" className='navigation__btn'
+                    >
+                        Фильмы
+                    </Link>
+                    <Link to="/saved-movies" className='navigation__btn navigation__btn_bold'
+                    >
+                        Сохраненные фильмы
+                    </Link>
+                </div>
+            ) : (
+                <div className='navigation__btn-container navigation__btn-container_films'>
+                    <Link to="/movies" className='navigation__btn'
+                    >
+                        Фильмы
+                    </Link>
+                    <Link to="/saved-movies" className='navigation__btn'
+                    >
+                        Сохраненные фильмы
+                    </Link>
+                </div>
+            )
+            }
             <div className='navigation__btn-container'>
                 <Link
                     to="/profile"
-         
                     className='navigation__btn navigation__btn_account'>
                     Аккаунт
                 </Link>
@@ -24,8 +53,6 @@ export default function Navigation() {
         </> :
         <>
 
-            {/* На этапе верстки: чтобы появился попап с навигацией нужно в Header.css 
-        .header__btn-container_blok {изменить display: none; на display: block} */}
             <div className="navigation__overlay">
                 <div className="navigation__container-wrapper"></div>
                 <div className="navigation__list">
@@ -34,21 +61,21 @@ export default function Navigation() {
                         <NavLink
                             exact
                             to="/"
-                    
+                            // onClick
                             className="navigation__item"
                             activeClassName="navigation__item_active">
                             Главная
                         </NavLink>
                         <NavLink
                             to="/movies"
-                 
+                            // onClick
                             className="navigation__item"
                             activeClassName="navigation__item_active">
                             Фильмы
                         </NavLink>
                         <NavLink
                             to="/saved-movies"
-                  
+                            // onClick
                             className="navigation__item"
                             activeClassName="navigation__item_active">
                             Сохранённые фильмы
@@ -56,7 +83,7 @@ export default function Navigation() {
                     </nav>
                     <Link
                         to="/profile"
-                 
+                        // onClick
                         className='navigation__btn navigation__btn_account'>
                         Аккаунт
                     </Link>

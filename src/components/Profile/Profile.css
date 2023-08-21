@@ -82,6 +82,9 @@
     background-color: white;
     cursor: pointer;
 }
+.profile__edit:disabled {
+    opacity: 0.2;
+}
 .profile__logout {
     font-style: normal;
     font-weight: 500;
