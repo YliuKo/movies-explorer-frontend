@@ -10,3 +10,4 @@ export const PHONEMAXWIDTH = 480;
 export const TABLEPHONEMAX = 2;
 export const PHONEMAXCOUNT = 5;
 export const PHONEMINWIDTH = 320;
+export const DURATION = 40;

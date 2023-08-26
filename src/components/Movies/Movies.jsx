@@ -8,6 +8,7 @@ import { getMovies } from "../../utils/MoviesApi";
 import { useWindowWidth } from "@react-hook/window-size";
 import { setMoviesRedux } from "../../redux/slices/searchReducer";
 import {
+  DURATION,
   NOTECOUNT,
   NOTEMAX,
   NOTEMINCOUNT,
@@ -90,9 +91,9 @@ export default function Movies() {
           if (short) {
             return (
               (elem.nameRU.toLowerCase().includes(search.toLowerCase()) &&
-                elem.duration <= 40) ||
+                elem.duration <= DURATION) ||
               (elem.nameEN.toLowerCase().includes(search.toLowerCase()) &&
-                elem.duration <= 40)
+                elem.duration <= DURATION)
             );
           } else {
             return (

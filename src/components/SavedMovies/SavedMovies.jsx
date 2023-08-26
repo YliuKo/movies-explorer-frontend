@@ -5,6 +5,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import { getLikeMovies } from "../../utils/MainApi";
+import { DURATION } from "../../utils/constants";
 
 export default function SavedMovies() {
   const token = useSelector((state) => state.user.token);
@@ -20,9 +21,9 @@ export default function SavedMovies() {
             if (saveShort) {
               return (
                 (elem.nameRU.toLowerCase().includes(saveSearch.toLowerCase()) &&
-                  elem.duration <= 40) ||
+                  elem.duration <= DURATION) ||
                 (elem.nameEN.toLowerCase().includes(saveSearch.toLowerCase()) &&
-                  elem.duration <= 40)
+                  elem.duration <= DURATION)
               );
             } else {
               return (

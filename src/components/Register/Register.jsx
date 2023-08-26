@@ -11,7 +11,8 @@ import { useDispatch } from "react-redux";
 import { setToken } from "../../redux/slices/userReducer";
 
 export default function Register() {
-  const validMail = /^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/;
+  const validMail =
+    /^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/;
 
   const dispatch = useDispatch();
 
@@ -48,7 +49,9 @@ export default function Register() {
         handleLogin({ email: values.email, password: values.password })
           .then((res) => {
             dispatch(setToken(res.token));
-            navigate("/movies");
+            setTimeout(() => {
+              navigate("/movies");
+            }, 0);
           })
           .catch((err) => {
             console.log(err);
