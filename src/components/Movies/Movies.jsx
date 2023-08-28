@@ -37,7 +37,7 @@ export default function Movies() {
 
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  function getCountAndMax() {
     if (width > NOTEWIDTH) {
       setMax(NOTEMAX);
       setCountFilms(NOTECOUNT);
@@ -57,6 +57,9 @@ export default function Movies() {
       setMax(TABLEPHONEMAX);
       setCountFilms(PHONEMAXCOUNT);
     }
+  }
+  useEffect(() => {
+    getCountAndMax();
   }, [width]);
 
   useEffect(() => {
@@ -109,7 +112,7 @@ export default function Movies() {
   return (
     <>
       <Header />
-      <SearchForm />
+      <SearchForm getCountAndMax={getCountAndMax} />
       <MoviesCardList
         err={err}
         loadMore={loadMore}
