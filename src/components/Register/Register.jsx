@@ -50,6 +50,7 @@ export default function Register() {
           .then((res) => {
             dispatch(setToken(res.token));
             setTimeout(() => {
+              console.log("переброс");
               navigate("/movies");
             }, 0);
           })
